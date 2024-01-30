@@ -12,7 +12,7 @@
   "type": "module",
   "types": "dist/mosaic-sql.d.ts",
   "main": "dist/mosaic-sql.js",
-  "module": "src/index.ts",
+  "module": "dist/mosaic-sql.js",
   "jsdelivr": "dist/mosaic-sql.min.js",
   "unpkg": "dist/mosaic-sql.min.js",
   "repository": {
@@ -21,13 +21,19 @@
   },
   "scripts": {
     "prebuild": "rimraf dist && mkdir dist",
-    "build": "node ../../esbuild.js mosaic-sql src/index.ts",
+    "build": "node esbuild.js mosaic-sql ./src/index.ts",
     "lint": "eslint src test --ext .ts",
     "test": "ts-mocha 'test/**/*-test.ts'",
     "prepublishOnly": "npm run test && npm run lint && npm run build"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
+    "rimraf": "^5.0.5",
     "ts-mocha": "^10.0.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }
