@@ -1,0 +1,33 @@
+{
+  "name": "@uwdata/mosaic-sql",
+  "version": "0.4.0",
+  "description": "SQL query construction and analysis.",
+  "keywords": [
+    "sql",
+    "query",
+    "mosaic"
+  ],
+  "license": "BSD-3-Clause",
+  "author": "Jeffrey Heer (http://idl.cs.washington.edu)",
+  "type": "module",
+  "types": "dist/mosaic-sql.d.ts",
+  "main": "dist/mosaic-sql.js",
+  "module": "src/index.ts",
+  "jsdelivr": "dist/mosaic-sql.min.js",
+  "unpkg": "dist/mosaic-sql.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uwdata/mosaic.git"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist && mkdir dist",
+    "build": "node ../../esbuild.js mosaic-sql src/index.ts",
+    "lint": "eslint src test --ext .ts",
+    "test": "ts-mocha 'test/**/*-test.ts'",
+    "prepublishOnly": "npm run test && npm run lint && npm run build"
+  },
+  "devDependencies": {
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.3.3"
+  }
+}
